@@ -1,5 +1,5 @@
-#ifndef C_GRAPH_H
-#define C_GRAPH_H
+#ifndef PP_GRAPH_H
+#define PP_GRAPH_H
 
 #include <stdlib.h>
 #include <vector>
@@ -117,4 +117,4 @@ public:
     std::vector<PP_point> P;
 };
 
-#endif // C_GRAPH_H
+#endif // PP_GRAPH_H
