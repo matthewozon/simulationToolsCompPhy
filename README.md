@@ -9,6 +9,6 @@ This project aims to provide numerical tools for physics simulations
   3 lattice Boltzmann
   4 model Smoothed-particle hydrodynamics
   5 FDTD
-  6 examples
+  6 examples (light propagation, fluid mechanics, heat diffusion, matter, diffraction)
   
 Everything must be created! Feel free to help :-)
