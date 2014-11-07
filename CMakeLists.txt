@@ -11,6 +11,7 @@ add_library(
         compPhy
 	SHARED
 	compPhy/PP_graph.cpp
+        compPhy/PP_rk4.cpp
 )
 
 target_link_libraries(
