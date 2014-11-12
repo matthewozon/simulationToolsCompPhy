@@ -12,6 +12,7 @@ add_library(
 	SHARED
 	compPhy/PP_graph.cpp
         compPhy/PP_RK4.cpp
+        compPhy/PP_euler.cpp
 )
 
 target_link_libraries(
