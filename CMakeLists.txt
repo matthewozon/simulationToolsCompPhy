@@ -13,7 +13,9 @@ add_library(
 	compPhy/PP_graph.cpp
         compPhy/PP_RK4.cpp
         compPhy/PP_euler.cpp
+        compPhy/PP_FDTD_1D.cpp
 )
+
 
 target_link_libraries(
         compPhy
