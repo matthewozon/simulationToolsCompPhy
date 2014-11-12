@@ -12,7 +12,7 @@
 int main()
 {
     bidon euler;
-    euler.solveEquationAndSaveToFile(1.0, 0.0, 0.0, 0.0, 0.2, "results");
+    euler.solveEquationAndSaveToFile(1.0, 0.0, 0.0, 0.0, 0.02, "results");
     return 0;
 }
 

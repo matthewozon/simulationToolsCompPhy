@@ -6,9 +6,9 @@
 #include <math.h>
 #include <fstream>
 
-#include <PP_RK4.h>
+#include <PP_euler.h>
 
-class bidon : public PP_RK4
+class bidon : public PP_EULER
 {
 public:
     bidon();

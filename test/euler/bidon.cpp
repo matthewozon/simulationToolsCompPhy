@@ -1,6 +1,6 @@
 #include <bidon.h>
 
-bidon::bidon():PP_RK4()
+bidon::bidon():PP_EULER()
 {
     //
 }
@@ -15,9 +15,9 @@ void bidon::solveEquationAndSaveToFile(double x0, double y0, double z0, double t
     double z = z0;
     double* dr;
     f << t << ", " << x << ", " << y << ", " << z << std::endl;
-    for(unsigned long i=0 ; i<1000 ; i++)
+    for(unsigned long i=0 ; i<10000 ; i++)
     {
-         dr = RK4step(x, y, z, t, dt);
+         dr = EULERstep(x, y, z, t, dt);
          t+=dt;
          x+=dr[0];
          y+=dr[1];
