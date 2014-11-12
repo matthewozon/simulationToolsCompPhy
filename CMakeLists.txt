@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 #Project config
 project(compPhy)
-set(LIBRARY_OUTPUT_PATH lib/${CMAKE_BUILD_TYPE})
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BUILD_TYPE}) #lib/
 include_directories(. compPhy)
 link_directories(.)
 
@@ -11,7 +11,7 @@ add_library(
         compPhy
 	SHARED
 	compPhy/PP_graph.cpp
-        compPhy/PP_rk4.cpp
+        compPhy/PP_RK4.cpp
 )
 
 target_link_libraries(

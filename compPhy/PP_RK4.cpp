@@ -1,8 +1,7 @@
-#include <PP_rk4.h>
+#include <PP_RK4.h>
 
 PP_RK4::PP_RK4()
 {
-    //
 }
 
 PP_RK4::PP_RK4(PP_RK4 const &other)
@@ -20,34 +19,11 @@ PP_RK4::~PP_RK4()
     //
 }
 
-
-
-
-double* PP_RK4::F(double x, double y, double z, double t) ///dr(x,y,z,t)/dt = F(x,y,z,t)
+double* PP_RK4::F(double x, double y, double z, double t) const
 {
-    double* v = new double[3];
-    v[0] = t*x;
-    v[1] = t*y;
-    v[2] = t*z;
-    return v;
+    return 0;
 }
-/*double* C_streamline::EULERstep(double x, double y, double z, double t, double dt, bool reverse)
-{
-    double* dr = F(x,y,z,t);
-    if(reverse)
-    {
-        dr[0] = -dt*dr[0];
-        dr[1] = -dt*dr[1];
-        dr[2] = -dt*dr[2];
-    }
-    else
-    {
-        dr[0] = dt*dr[0];
-        dr[1] = dt*dr[1];
-        dr[2] = dt*dr[2];
-    }
-    return dr;
-}*/
+
 double* PP_RK4::RK4step(double x, double y, double z, double t, double dt)
 {
     double* K1 = RK4K1(x, y, z, t, dt);
