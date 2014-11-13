@@ -14,6 +14,7 @@ add_library(
         compPhy/PP_RK4.cpp
         compPhy/PP_euler.cpp
         compPhy/PP_FDTD_1D.cpp
+        compPhy/PP_smartAlloc.cpp
 )
 
 

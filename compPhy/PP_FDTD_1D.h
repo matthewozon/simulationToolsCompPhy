@@ -1,7 +1,10 @@
 #ifndef PP_FDTD_1D_H
 #define PP_FDTD_1D_H
 
-#include <stdlib.h>
+#include <PP_smartAlloc.h>
+
+#include <math.h>
+
 
 //http://www.phys.ubbcluj.ro/~emil.vinteler/nanofotonica/FDTD/FDTD_Nagel.pdf
 
@@ -9,7 +12,7 @@ class PP_FDTD_1D
 {
 public:
     PP_FDTD_1D();
-    PP_FDTD_1D(double _dt, double _DT, double _dz, double _DZ, double _R=1.0, double _L=1.0, double _C=1.0, double _G=1.0);
+    PP_FDTD_1D(double _dt, double _DT, double _dz, double _DZ, double _R=0.0, double _L=1.0, double _C=1.0, double _G=0.0);
     PP_FDTD_1D(PP_FDTD_1D const &other);
     PP_FDTD_1D(PP_FDTD_1D &other);
     virtual ~PP_FDTD_1D();
@@ -23,21 +26,25 @@ public:
     unsigned long getTimeLength(void){return Nt;}
     unsigned long getSpatialLength(void){return Nz;}
 
-    double getv0(unsigned long i);
-    double geti0(unsigned long i);
+    double getI(unsigned long n, unsigned long k){return I[n][k];}
+    double getV(unsigned long n, unsigned long k){return V[n][k];}
 
-    void setv0(unsigned long i, double myValue);
-    void seti0(unsigned long i, double myValue);
+    bool run(bool shortCircuit=true, bool borderExcitationON=true);
+
+    virtual void intialState(void);
+    virtual void borderExcitation(unsigned long n);
 
 
 
 private:
-    double* v0; //initial voltage at time t0 over the whole line
-    double* i0; //initial current at time t0 over the whole line
-    double * allocate(unsigned long N);
-    void dealocate(double* X);
+    PP_smartAlloc myAllocator;
+
     unsigned long Nt; //discrete temporal length
     unsigned long Nz; //discrete spatial length
+
+    double** I; //I[n][k] stands for i(k*dz, (n+0.5)*dt)
+    double** V; //V[n][k] stands for v((k+0.5)*dz, n*dt)
+
 
     double dt; //temporal integration step
     double DT; //temporal length of the signal
@@ -50,9 +57,6 @@ private:
     double c4;
 
     void calculateCoefficients(void);
-
-    double computeStepCurrent(unsigned long n, unsigned long k);
-    double computeStepVoltage(unsigned long n, unsigned long k);
 
 };
 

@@ -25,6 +25,7 @@ void bidon::solveEquationAndSaveToFile(double x0, double y0, double z0, double t
          delete dr;
          f << t << ", " << x << ", " << y << ", " << z << std::endl;
     }
+    f.close();
     return;
 }
 
