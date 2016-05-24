@@ -113,7 +113,7 @@ double PP_particle_set::aggregationProbability(double v /*norm of the speed at t
     return (v < 0.0) ? exp(alpha*v) : exp(-alpha*v);
 }
 
-PP_COORD PP_particle_set::interactionForce(int idxP1, int idxP2)
+PP_COORD PP_particle_set::interactionForce(int idxP1, int idxP2) //action of P1 over P2
 {
     if( idxP1<0 || idxP1>=S.size() || idxP2<0 || idxP2>=S.size())
     {
@@ -124,7 +124,22 @@ PP_COORD PP_particle_set::interactionForce(int idxP1, int idxP2)
     else
     {
         PP_COORD F;
-        F=S.at(idxP2).coord-S.at(idxP1).coord;
+        if((S.at(idxP2).coord-S.at(idxP1).coord).norm()>(S.at(idxP2).R+S.at(idxP1).R) )
+        {
+            //apply distant forces
+            F=(S.at(idxP1).coord-S.at(idxP2).coord)/(S.at(idxP2).coord-S.at(idxP1).coord).normSQR();
+        }
+        else
+        {
+            //apply contact force
+            //determine the unitary vector between the center of P2 and the center of P1
+            PP_COORD u=(S.at(idxP2).coord-S.at(idxP1).coord);
+            u/=u.norm();
+            //calculate the speed difference
+            PP_COORD dv=(S.at(idxP2).v-S.at(idxP1).v);
+            //estimate the force
+            F=u*(dv.inner(u)*(-2.0*S.at(idxP1).m*S.at(idxP2).m / (S.at(idxP1).dt*(S.at(idxP1).m+S.at(idxP2).m))  ));
+        }
         return F;
     }
 }

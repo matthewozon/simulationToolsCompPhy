@@ -28,6 +28,9 @@ public:
     //characteristic radius (may change)
     double R;
 
+    //temporal resolution
+    double dt;
+
     //forces
     virtual PP_COORD force() =0;
 };

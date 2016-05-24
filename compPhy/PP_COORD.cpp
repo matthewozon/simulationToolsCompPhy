@@ -134,6 +134,21 @@ void PP_COORD::operator*= (double const& a)
     return;
 }
 
+PP_COORD PP_COORD::operator/ (double const& a)
+{
+    PP_COORD b(*this);
+    b/=a;
+    return b;
+}
+
+void PP_COORD::operator/= (double const& a)
+{
+    x/=a;
+    y/=a;
+    z/=a;
+    return;
+}
+
 
 //other tools
 double PP_COORD::inner(PP_COORD const& c)
@@ -144,6 +159,16 @@ double PP_COORD::inner(PP_COORD const& c)
 double PP_COORD::inner(PP_COORD & c)
 {
     return inner( (PP_COORD const&) c);
+}
+
+double PP_COORD::norm(void)
+{
+    return sqrt(x*x+y*y+z*z);
+}
+
+double PP_COORD::normSQR(void)
+{
+    return x*x+y*y+z*z;
 }
 
 PP_COORD PP_COORD::cross(PP_COORD const& c)
@@ -271,4 +296,9 @@ PP_COORD PP_COORD::operator<= (double const& a)
     if(y<=a) b.y=1.0;
     if(z<=a) b.z=1.0;
     return b;
+}
+
+void PP_COORD::show(void)
+{
+    std::cout << "(x,y,z)=(" << x << "," << y << "," << z << ")" << std::endl;
 }

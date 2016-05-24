@@ -3,6 +3,9 @@
 #ifndef PP_COORD_H
 #define PP_COORD_H
 
+#include <math.h>
+#include <iostream>
+
 class PP_COORD
 {
 public:
@@ -31,10 +34,14 @@ public:
     void operator-= (double const& a);
     PP_COORD operator* (double const& a);
     void operator*= (double const& a);
+    PP_COORD operator/ (double const& a);
+    void operator/= (double const& a);
 
     //ohter tools
     double inner(PP_COORD const& c);
     double inner(PP_COORD & c);
+    double norm(void);
+    double normSQR(void);//=SQR(norm)
     PP_COORD cross(PP_COORD const& c);
     PP_COORD cross(PP_COORD & c);
     bool all(void);
@@ -48,6 +55,8 @@ public:
     PP_COORD operator< (double const& a);
     PP_COORD operator<= (PP_COORD const& c);
     PP_COORD operator<= (double const& a);
+
+    void show(void);
 };
 
 #endif // PP_COORD_H
