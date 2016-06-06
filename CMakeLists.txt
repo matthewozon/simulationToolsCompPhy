@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 #Project config
 project(compPhy)
 set(LIBRARY_OUTPUT_PATH lib/${CMAKE_BUILD_TYPE}) #lib/
-include_directories(. compPhy)
+include_directories(. compPhy tools)
 link_directories(.)
 
 #add source files to the library
@@ -19,6 +19,8 @@ add_library(
         compPhy/PP_object.cpp
         compPhy/PP_COORD.cpp
         compPhy/PP_particle_set.cpp
+        compPhy/PP_sigRMN.cpp
+        compPhy/PP_el_hahn.cpp
 )
 
 
