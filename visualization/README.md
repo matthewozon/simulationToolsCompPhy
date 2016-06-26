@@ -1,8 +1,9 @@
-simple iteractions dynamics scene
+Simple iteractions: dynamics scene
 ======================
 
 #Thanks
 VTK code deeply inspired by the examples:
+
     1. http://www.vtk.org/Wiki/VTK/Examples/Cxx/Filtering/CombinePolyData
     2. http://www.vtk.org/Wiki/VTK/Examples/Cxx/Utilities/AnimationScene
 I thanks the authors of thoses examples that were really helpfull.
